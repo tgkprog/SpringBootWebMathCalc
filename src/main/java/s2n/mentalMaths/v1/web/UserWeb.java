@@ -10,39 +10,16 @@ import s2n.mentalMaths.service.UserService;
 import java.util.Set;
 
 @RestController ()
-@RequestMapping("/v1/nodeInfo")
+@RequestMapping("/v1/users")
 public class UserWeb {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/postTest", method = RequestMethod.POST, produces="application/json", consumes="application/json")
-    public ResponseEntity<String> postTest(@RequestAttribute String user){
-        System.out.println("postTest user :" + user + ". ");
-        return ResponseEntity.ok("postTest2 " + new java.util.Date());
-
-        /* String name,@RequestAttribute  String email,@RequestAttribute  String pwd){
-        System.out.println("Math Quiz web user add name :" + name + " , eml " + email);
-        Response rsp = userService.addOrUpdate(name, email, pwd);
-        return ResponseEntity.ok(rsp);
-        */
-    }
-
-    @PostMapping("/postTest2")
-    public ResponseEntity<String> postTest2(){
-
-        return ResponseEntity.ok("postTest2 " + new java.util.Date());
-
-        /* String name,@RequestAttribute  String email,@RequestAttribute  String pwd){
-        System.out.println("Math Quiz web user add name :" + name + " , eml " + email);
-        Response rsp = userService.addOrUpdate(name, email, pwd);
-        return ResponseEntity.ok(rsp);
-        */
-    }
 
     //PostMapping("/add")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces="application/json", consumes="application/json")
 
-    public ResponseEntity<Response> signUp( User user){/// FYI Dont add @RequestAttribute to the User param.
+    public ResponseEntity<Response> signUp(@RequestBody User user){/// FYI Dont add @RequestAttribute to the User param.
         System.out.println("Math Quiz web user add user (v2) :" + user + ". ");
         Response rsp = userService.addOrUpdate(user);
             return ResponseEntity.ok(rsp);
@@ -52,6 +29,17 @@ public class UserWeb {
         Response rsp = userService.addOrUpdate(name, email, pwd);
         return ResponseEntity.ok(rsp);
         */
+    }
+
+
+
+    @GetMapping("/sample")
+    public ResponseEntity<User> sample(){
+        User user = new User();
+        user.setEmail("samle.s.ff");
+        user.setName("Tom Young");
+        //ignore password
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/list")
