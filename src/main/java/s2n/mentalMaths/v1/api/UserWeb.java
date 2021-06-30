@@ -1,4 +1,4 @@
-package s2n.mentalMaths.v1.web;
+package s2n.mentalMaths.v1.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import s2n.mentalMaths.model.Response;
 import s2n.mentalMaths.model.User;
 import s2n.mentalMaths.service.UserService;
-
-import java.util.Set;
 
 @RestController ()
 @RequestMapping("/v1/users")

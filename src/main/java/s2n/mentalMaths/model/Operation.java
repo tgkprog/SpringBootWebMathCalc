@@ -9,6 +9,11 @@ public enum Operation {
 
     }
 
+
+    Operation(int v){
+
+    }
+
     public int getValue(){
         return this.getValue();
     }

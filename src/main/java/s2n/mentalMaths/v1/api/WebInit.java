@@ -1,4 +1,4 @@
-package s2n.mentalMaths.v1.web;
+package s2n.mentalMaths.v1.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,10 @@
 package s2n.mentalMaths.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import s2n.mentalMaths.mathQuiz.MyBean1;
+import s2n.mentalMaths.model.Calc;
 import s2n.mentalMaths.model.Response;
 import s2n.mentalMaths.model.User;
 
@@ -12,7 +16,25 @@ import java.util.Map;
 @Service
 public class UserService {
 
+    @Autowired
+    MyBean1 myBeanGlobal;
+
+    @Autowired
+    MyBean1 myBeanNew;
+
+    @Autowired
+    @Qualifier("myBeanNew")
+    MyBean1 myBeanNew2;
+
     private Map<String, User> users = new HashMap<>();
+
+    public void beansInfoTrace(Calc calc){
+        CalcService.traceToCalc("User service " , calc);
+        CalcService.traceToCalc("myBeanNew " + myBeanNew.getName(), calc);
+        CalcService.traceToCalc("myBeanNew2 " + myBeanNew2.getName(), calc);
+        CalcService.traceToCalc("myBeanGlobal " + myBeanGlobal.getName(), calc);
+
+    }
 
     public Response addOrUpdate(User user) {
         return addOrUpdate(user.getName(), user.getEmail(), user.getPwd());
